@@ -13,3 +13,24 @@ describe('Test Framework', function () {
         true.should.eql(true);
     })
 })
+
+describe('Asynchronous testing', function () {
+
+    var result = false;
+
+    beforeEach(function (done) {
+
+        setTimeout(function () {
+            var something = 2;
+            var somethingElse = 'check';
+
+            result = true;
+            //complete the async beforeEach
+            done();
+        }, 2000);
+    });
+    it('should Not be so hard so this makes it easier.', function (done) {
+        result.should.eql(true);
+        done();
+    })
+})
